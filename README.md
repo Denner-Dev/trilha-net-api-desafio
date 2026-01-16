@@ -1,58 +1,95 @@
-# DIO - Trilha .NET - API e Entity Framework
-www.dio.me
+# 🎯 Desafio Trilha .NET - API de Tarefas
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de API e Entity Framework, da trilha .NET da DIO.
+Desafio de projeto da DIO Trilha .NET. Implementar uma API REST completa para gerenciamento de tarefas com endpoints CRUD.
 
-## Contexto
-Você precisa construir um sistema gerenciador de tarefas, onde você poderá cadastrar uma lista de tarefas que permitirá organizar melhor a sua rotina.
+## ✨ Funcionalidades
 
-Essa lista de tarefas precisa ter um CRUD, ou seja, deverá permitir a você obter os registros, criar, salvar e deletar esses registros.
+- ✅ Criar nova tarefa
+- ✅ Ler/Listar tarefas
+- ✅ Atualizar tarefa
+- ✅ Deletar tarefa
+- ✅ Integração com banco de dados
+- ✅ Documentação com Swagger
 
-A sua aplicação deverá ser do tipo Web API ou MVC, fique a vontade para implementar a solução que achar mais adequado.
+## 🛠️ Tecnologias
 
-A sua classe principal, a classe de tarefa, deve ser a seguinte:
+- C# 11
+- .NET 6+
+- Entity Framework Core
+- SQL Server / LocalDB
+- Swagger/OpenAPI
 
-![Diagrama da classe Tarefa](diagrama.png)
+## 🚀 Como Executar
 
-Não se esqueça de gerar a sua migration para atualização no banco de dados.
+### Pré-requisitos
+- .NET 6 ou superior
+- SQL Server ou LocalDB
+- Visual Studio 2022 ou VS Code
 
-## Métodos esperados
-É esperado que você crie o seus métodos conforme a seguir:
+### Instalação
 
+```bash
+git clone https://github.com/Denner-Dev/trilha-net-api-desafio.git
+cd trilha-net-api-desafio
+```
 
-**Swagger**
+### Configurar Banco de Dados
 
+1. Abra o arquivo `appsettings.json`
+2. Configure a ConnectionString do seu SQL Server
+3. Execute migrations:
+   ```bash
+   dotnet ef database update
+   ```
 
-![Métodos Swagger](swagger.png)
+### Executar
 
+```bash
+dotnet run
+```
 
-**Endpoints**
+A API estará disponível em: `https://localhost:7000`
+Swagger disponível em: `https://localhost:7000/swagger`
 
+## 📚 Endpoints
 
-| Verbo  | Endpoint                | Parâmetro | Body          |
-|--------|-------------------------|-----------|---------------|
-| GET    | /Tarefa/{id}            | id        | N/A           |
-| PUT    | /Tarefa/{id}            | id        | Schema Tarefa |
-| DELETE | /Tarefa/{id}            | id        | N/A           |
-| GET    | /Tarefa/ObterTodos      | N/A       | N/A           |
-| GET    | /Tarefa/ObterPorTitulo  | titulo    | N/A           |
-| GET    | /Tarefa/ObterPorData    | data      | N/A           |
-| GET    | /Tarefa/ObterPorStatus  | status    | N/A           |
-| POST   | /Tarefa                 | N/A       | Schema Tarefa |
+| Método | Endpoint | Descrição |
+|--------|----------|-----------|
+| GET | `/api/tarefas` | Listar todas as tarefas |
+| GET | `/api/tarefas/{id}` | Obter tarefa por ID |
+| POST | `/api/tarefas` | Criar nova tarefa |
+| PUT | `/api/tarefas/{id}` | Atualizar tarefa |
+| DELETE | `/api/tarefas/{id}` | Deletar tarefa |
 
-Esse é o schema (model) de Tarefa, utilizado para passar para os métodos que exigirem
+## 📋 Schema Tarefa
 
 ```json
 {
-  "id": 0,
-  "titulo": "string",
-  "descricao": "string",
-  "data": "2022-06-08T01:31:07.056Z",
+  "id": 1,
+  "titulo": "Minha Tarefa",
+  "descricao": "Descrição da tarefa",
+  "dataCriacao": "2024-01-16",
+  "dataVencimento": "2024-01-20",
   "status": "Pendente"
 }
 ```
 
+## 📁 Estrutura
 
-## Solução
-O código está pela metade, e você deverá dar continuidade obedecendo as regras descritas acima, para que no final, tenhamos um programa funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+```
+trilha-net-api-desafio/
+├── Program.cs
+├── appsettings.json
+├── Controllers/
+│   └── TarefasController.cs
+├── Models/
+│   └── Tarefa.cs
+├── Context/
+│   └── TarefasDbContext.cs
+├── Migrations/
+└── README.md
+```
+
+##  Licença
+
+MIT
